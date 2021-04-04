@@ -1,0 +1,25 @@
+#!/bin/sh /etc/rc.common
+
+#https://openwrt.org/docs/techref/initscripts
+
+#https://stackoverflow.com/questions/33340659/how-to-auto-start-an-application-in-openwrt
+#$ chmod +x /etc/init.d/
+#$ /etc/init.d/frps enable
+#$ ls -lh /etc/rc.d | grep frps
+#$ /etc/init.d/frps enabled && echo on
+
+# Example script
+# Copyright (C) 2007 OpenWrt.org
+ 
+START=10
+STOP=15
+ 
+start() {        
+        nohup /root/.local/bin/frps -c /root/frps.ini >/dev/null 2>&1 &
+        # commands to launch application
+}                 
+ 
+stop() {          
+        pkill -f frps
+        # commands to kill application 
+}
