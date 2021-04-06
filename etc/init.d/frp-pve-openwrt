@@ -14,17 +14,25 @@
 START=50
 STOP=90
 
-USE_PROCD=1
-
 pkg_realdirname=/repo/github.com/hongyi-zhao/homeshare.git/Public/repo/github.com/fatedier
+
 frps=$pkg_realdirname/frps
+frpc=$pkg_realdirname/frpc
+
 frps_ini=$pkg_realdirname/frps-pve-openwrt.ini
+frpc_ini=$pkg_realdirname/frpc-pve-openwrt.ini
+
 start() {        
         nohup $frps -c $frps_ini >/dev/null 2>&1 &
-        # commands to launch application
+        pid=$!
+        #https://unix.stackexchange.com/questions/68693/how-to-know-if-a-background-job-is-finished 
+        sleep 2
+        if kill -0 $pid; then
+          $frpc -c $frpc_ini >/dev/null 2>&1 &
+        fi 
 }                 
  
 stop() {          
+        pkill -f frpc
         pkill -f frps
-        # commands to kill application 
 }
