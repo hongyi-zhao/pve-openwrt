@@ -11,8 +11,10 @@
 # Example script
 # Copyright (C) 2007 OpenWrt.org
  
-START=10
-STOP=15
+START=50
+STOP=90
+
+USE_PROCD=1
 
 pkg_realdirname=/repo/github.com/hongyi-zhao/homeshare.git/Public/repo/github.com/fatedier
 frps=$pkg_realdirname/frps
