@@ -1,0 +1,28 @@
+#!/bin/sh /etc/rc.common
+
+#https://openwrt.org/docs/techref/initscripts
+
+#https://stackoverflow.com/questions/33340659/how-to-auto-start-an-application-in-openwrt
+#$ chmod +x /etc/init.d/
+#$ /etc/init.d/`basname $0` enable
+#$ ls -lh /etc/rc.d | grep frps
+#$ /etc/init.d/frps enabled && echo on
+
+# Example script
+# Copyright (C) 2007 OpenWrt.org
+ 
+START=10
+STOP=15
+
+pkg_realdirname=/repo/github.com/hongyi-zhao/homeshare.git/Public/repo/github.com/fatedier
+frpc=$pkg_realdirname/frpc
+frpc_ini=$pkg_realdirname/frpc-pve-openwrt.ini
+start() {        
+        nohup $frpc -c $frpc_ini >/dev/null 2>&1 &
+        # commands to launch application
+}                 
+ 
+stop() {          
+        pkill -f frpc
+        # commands to kill application 
+}
