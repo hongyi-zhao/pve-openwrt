@@ -225,3 +225,12 @@ config redirect
 	option src_dport '22'
 	option dest_ip '192.168.10.1'
 
+config redirect
+	option target 'DNAT'
+	option name 'frps-bind_udp_port'
+	list proto 'udp'
+	option src 'wan'
+	option src_dport '7001'
+	option dest 'lan'
+	option dest_ip '192.168.10.1'
+
