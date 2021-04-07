@@ -184,3 +184,54 @@ config redirect
 	option src_dport '22254'
 	option name 'ssh-pve'
 
+config redirect
+        option name 'frps-bind_port'
+        option src 'wan'
+        option dest 'lan'
+        option target 'DNAT'
+        list proto 'tcp'
+        list proto 'udp'
+        option src_dport '57000'
+        option dest_ip '192.168.10.1'
+
+config redirect
+        option name 'frpc-http-office-remote_port'
+        option src 'wan'
+        option dest 'lan'
+        option target 'DNAT'
+        list proto 'tcp'
+        list proto 'udp'
+        option src_dport '56004'
+        option dest_ip '192.168.10.1'
+
+
+config redirect
+        option name 'frpc-socks5-office-remote_port'
+        option src 'wan'
+        option dest 'lan'
+        option target 'DNAT'
+        list proto 'tcp'
+        list proto 'udp'
+        option src_dport '56005'
+        option dest_ip '192.168.10.1'
+
+config redirect
+        option name 'frpc-office-admin_port'
+        option src 'wan'
+        option dest 'lan'
+        option target 'DNAT'
+        list proto 'tcp'
+        list proto 'udp'
+        option src_dport '57400'
+        option dest_ip '192.168.10.1'
+
+config redirect
+        option name 'ssh-pve-openwrt'
+        option src 'wan'
+        option dest 'lan'
+        option target 'DNAT'
+        list proto 'tcp'
+        list proto 'udp'
+        option src_dport '22'
+        option dest_ip '192.168.10.1'
+
