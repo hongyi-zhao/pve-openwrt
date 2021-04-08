@@ -144,7 +144,6 @@ config redirect
 	option dest_port '8000'
 
 config redirect
-	option name 'pve'
 	option src 'wan'
 	option dest 'lan'
 	option target 'DNAT'
@@ -152,6 +151,7 @@ config redirect
 	option dest_ip '192.168.10.254'
 	list proto 'tcp'
 	option dest_port '8006'
+	option name 'pve-webinterface'
 
 config redirect
 	option src 'wan'
@@ -159,9 +159,9 @@ config redirect
 	option target 'DNAT'
 	option dest_port '22'
 	option dest_ip '192.168.10.254'
-	option name 'ssh-pve'
 	list proto 'tcp'
 	option src_dport '2254'
+	option name 'pve-ssh'
 
 config rule
 	option src 'wan'
@@ -173,13 +173,13 @@ config rule
 
 config redirect
 	option target 'DNAT'
-	option name 'ssh-pve-ubuntu'
 	list proto 'tcp'
 	option src 'wan'
 	option src_dport '2101'
 	option dest 'lan'
 	option dest_ip '192.168.10.101'
 	option dest_port '22'
+	option name 'pve-ubuntu-ssh'
 
 config rule
 	option name 'allow-frps-bind_port'
@@ -196,4 +196,14 @@ config rule
 	option src_port '7001'
 	option dest_port '7001'
 	option target 'ACCEPT'
+
+config redirect
+	option target 'DNAT'
+	option name 'pve-openwrt-luci'
+	list proto 'tcp'
+	option src 'wan'
+	option dest 'lan'
+	option dest_ip '192.168.10.1'
+	option dest_port '80'
+	option src_dport '80'
 
