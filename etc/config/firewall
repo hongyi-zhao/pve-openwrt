@@ -129,19 +129,9 @@ config redirect
 	option target 'DNAT'
 	option dest_ip '192.168.10.101'
 	option src_dport '1935'
-	option name 'srs-rtmp-pve-ubuntu'
 	list proto 'tcp'
 	option dest_port '1935'
-
-config redirect
-	option src 'wan'
-	option dest 'lan'
-	option target 'DNAT'
-	option dest_ip '192.168.10.101'
-	option name 'srs-play-pve-ubuntu'
-	option src_dport '8000'
-	list proto 'tcp'
-	option dest_port '8000'
+	option name 'node-media-rtmp-server-pve-ubuntu'
 
 config redirect
 	option src 'wan'
@@ -151,7 +141,7 @@ config redirect
 	option dest_ip '192.168.10.254'
 	list proto 'tcp'
 	option dest_port '8006'
-	option name 'pve-webinterface'
+	option name 'webinterface-pve'
 
 config redirect
 	option src 'wan'
@@ -161,7 +151,7 @@ config redirect
 	option dest_ip '192.168.10.254'
 	list proto 'tcp'
 	option src_dport '2254'
-	option name 'pve-ssh'
+	option name 'ssh-pve'
 
 config redirect
 	option target 'DNAT'
@@ -171,35 +161,55 @@ config redirect
 	option dest 'lan'
 	option dest_ip '192.168.10.101'
 	option dest_port '22'
-	option name 'pve-ubuntu-ssh'
+	option name 'ssh-pve-ubuntu'
 
 config redirect
 	option target 'DNAT'
-	option name 'pve-openwrt-ssh'
 	list proto 'tcp'
 	option src 'wan'
 	option src_dport '22'
 	option dest 'lan'
 	option dest_ip '192.168.10.1'
 	option dest_port '22'
+	option name 'ssh-pve-openwrt'
 
 config redirect
 	option target 'DNAT'
-	option name 'autossh-reverse-office'
 	list proto 'tcp'
 	option src 'wan'
 	option src_dport '20022'
 	option dest 'lan'
 	option dest_ip '192.168.10.101'
 	option dest_port '20022'
+	option name 'autossh-remote-forward-office-pve-ubuntu'
 
 config redirect
 	option target 'DNAT'
-	option name 'autossh-reverse-socks5-office'
 	list proto 'tcp'
 	option src 'wan'
-	option src_dport '28888'
 	option dest 'lan'
 	option dest_ip '192.168.10.101'
-	option dest_port '28888'
+	option src_dport '21080'
+	option dest_port '21080'
+	option name 'autossh-remote-forward-socks5-office-pve-ubuntu'
+
+config redirect
+	option target 'DNAT'
+	list proto 'tcp'
+	option src 'wan'
+	option dest 'lan'
+	option dest_ip '192.168.10.101'
+	option name 'node-media-http-websocket-server-pve-ubuntu'
+	option src_dport '8000'
+	option dest_port '8000'
+
+config redirect
+	option target 'DNAT'
+	list proto 'tcp'
+	option src 'wan'
+	option dest 'lan'
+	option dest_ip '192.168.10.101'
+	option name 'node-media-https-websocketsecure-server-pve-ubuntu'
+	option src_dport '8443'
+	option dest_port '8443'
 
