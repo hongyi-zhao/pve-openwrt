@@ -2,7 +2,7 @@
         email = hongyi.zhao@gmail.com
         name = Hongyi Zhao
 [http]
-        proxy = socks5h://192.168.10.101:18888
+        proxy = socks5h://192.168.10.100:18888
 [status]
         showUntrackedFiles = no
 [core]
