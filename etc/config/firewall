@@ -182,6 +182,7 @@ config redirect
 	option name 'autossh-remote-forward-ssh-pve-ubuntu'
 	option reflection_src 'external'
 	option src_dip '106.9.177.233'
+	option src_ip '60.0.0.0/13'
 
 config redirect
 	option target 'DNAT'
@@ -194,14 +195,7 @@ config redirect
 	option name 'autossh-remote-forward-socks5-office-pve-ubuntu'
 	option src_dip '106.9.177.233'
 	option reflection_src 'external'
-
-config rule
-	option name 'zerotier'
-	option src 'wan'
-	option src_port '9993'
-	option dest_port '9993'
-	option target 'ACCEPT'
-	option dest 'lan'
+	option src_ip '60.0.0.0/13'
 
 config redirect
 	option target 'DNAT'
@@ -211,15 +205,8 @@ config redirect
 	option dest_ip '192.168.10.101'
 	list proto 'tcp'
 	list proto 'udp'
-	option src_dport '18000'
-	option dest_port '18000'
 	option src_dip '106.9.177.233'
 	option reflection_src 'external'
-
-config rule
-	option src 'wan'
-	option dest '*'
-	option target 'DROP'
-	list src_ip '143.110.224.0/20'
-	list src_ip '143.198.96.0/20'
+	option src_dport '8000'
+	option dest_port '8000'
 
