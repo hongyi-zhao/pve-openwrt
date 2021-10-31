@@ -237,8 +237,8 @@ config redirect
 	option dest_port '20022'
 	option reflection_src 'external'
 	option src_dip '106.9.177.233'
-	option src_ip '60.0.0.0/13'
 	option name 'remote-ssh-chinaunicom'
+	option src_ip '106.9.0.0/16'
 
 config redirect
 	option target 'DNAT'
@@ -250,6 +250,6 @@ config redirect
 	option dest_port '21080'
 	option src_dip '106.9.177.233'
 	option reflection_src 'external'
-	option src_ip '60.0.0.0/13'
 	option name 'remote-socks5-chinaunicom'
+	option src_ip '106.9.0.0/16'
 
