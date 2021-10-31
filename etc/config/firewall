@@ -131,9 +131,25 @@ config redirect
 	option dest_ip '192.168.10.254'
 	list proto 'tcp'
 	option dest_port '8006'
-	option name 'webinterface-pve'
 	option src_dip '106.9.177.233'
 	option reflection_src 'external'
+	option src_ip '106.9.0.0/16'
+	option name 'pve-web-chinatelecom'
+
+
+config redirect
+        option src 'wan'
+        option dest 'lan'
+        option target 'DNAT'
+        option src_dport '8006'
+        option dest_ip '192.168.10.254'
+        list proto 'tcp'
+        option dest_port '8006'
+        option src_dip '106.9.177.233'
+        option reflection_src 'external'
+        option src_ip '60.0.0.0/13'
+        option name 'pve-web-chinaunicom'
+
 
 config redirect
 	option src 'wan'
@@ -143,9 +159,25 @@ config redirect
 	option dest_ip '192.168.10.254'
 	list proto 'tcp'
 	option src_dport '2254'
-	option name 'ssh-pve'
 	option src_dip '106.9.177.233'
 	option reflection_src 'external'
+	option src_ip '106.9.0.0/16'
+	option name 'pve-ssh-chinatelecom'
+
+
+config redirect
+        option src 'wan'
+        option dest 'lan'
+        option target 'DNAT'
+        option dest_port '22'
+        option dest_ip '192.168.10.254'
+        list proto 'tcp'
+        option src_dport '2254'
+        option src_dip '106.9.177.233'
+        option reflection_src 'external'
+        option src_ip '60.0.0.0/13'
+        option name 'pve-ssh-chinaunicom'
+
 
 config redirect
 	option target 'DNAT'
@@ -155,9 +187,23 @@ config redirect
 	option dest 'lan'
 	option dest_ip '192.168.10.101'
 	option dest_port '22'
-	option name 'ssh-pve-ubuntu'
 	option src_dip '106.9.177.233'
 	option reflection_src 'external'
+	option src_ip '106.9.0.0/16'
+	option name 'pve-ubuntu-ssh-chinatelecom'
+
+config redirect
+        option target 'DNAT'
+        list proto 'tcp'
+        option src 'wan'
+        option src_dport '2101'
+        option dest 'lan'
+        option dest_ip '192.168.10.101'
+        option dest_port '22'
+        option src_dip '106.9.177.233'
+        option reflection_src 'external'
+        option src_ip '60.0.0.0/13'
+        option name 'pve-ubuntu-ssh-chinaunicom'
 
 config redirect
 	option target 'DNAT'
@@ -167,9 +213,23 @@ config redirect
 	option dest 'lan'
 	option dest_ip '192.168.10.1'
 	option dest_port '22'
-	option name 'ssh-pve-openwrt'
 	option src_dip '106.9.177.233'
 	option reflection_src 'external'
+	option src_ip '106.9.0.0/16'
+	option name 'pve-openwrt-ssh-chinatelecom'
+
+config redirect
+        option target 'DNAT'
+        list proto 'tcp'
+        option src 'wan'
+        option src_dport '22'
+        option dest 'lan'
+        option dest_ip '192.168.10.1'
+        option dest_port '22'
+        option src_dip '106.9.177.233'
+        option reflection_src 'external'
+        option src_ip '60.0.0.0/13'
+        option name 'pve-openwrt-ssh-chinaunicom'
 
 config redirect
 	option target 'DNAT'
@@ -179,10 +239,10 @@ config redirect
 	option dest 'lan'
 	option dest_ip '192.168.10.101'
 	option dest_port '20022'
-	option name 'autossh-remote-forward-ssh-pve-ubuntu'
 	option reflection_src 'external'
 	option src_dip '106.9.177.233'
 	option src_ip '60.0.0.0/13'
+	option name 'remote-ssh-chinaunicom'
 
 config redirect
 	option target 'DNAT'
@@ -192,21 +252,8 @@ config redirect
 	option dest_ip '192.168.10.101'
 	option src_dport '21080'
 	option dest_port '21080'
-	option name 'autossh-remote-forward-socks5-office-pve-ubuntu'
 	option src_dip '106.9.177.233'
 	option reflection_src 'external'
 	option src_ip '60.0.0.0/13'
-
-config redirect
-	option target 'DNAT'
-	option name 'chisel'
-	option src 'wan'
-	option dest 'lan'
-	option dest_ip '192.168.10.101'
-	list proto 'tcp'
-	list proto 'udp'
-	option src_dip '106.9.177.233'
-	option reflection_src 'external'
-	option src_dport '8000'
-	option dest_port '8000'
+	option name 'remote-socks5-chinaunicom'
 
