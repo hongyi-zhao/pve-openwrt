@@ -1,9 +1,9 @@
 
 config defaults
-	option syn_flood '1'
 	option input 'ACCEPT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
+	option synflood_protect '1'
 
 config zone
 	option name 'lan'
@@ -132,6 +132,8 @@ config redirect
 	list proto 'tcp'
 	option dest_port '8006'
 	option name 'webinterface-pve'
+	option src_dip '106.9.177.233'
+	option reflection_src 'external'
 
 config redirect
 	option src 'wan'
@@ -142,6 +144,8 @@ config redirect
 	list proto 'tcp'
 	option src_dport '2254'
 	option name 'ssh-pve'
+	option src_dip '106.9.177.233'
+	option reflection_src 'external'
 
 config redirect
 	option target 'DNAT'
@@ -152,6 +156,8 @@ config redirect
 	option dest_ip '192.168.10.101'
 	option dest_port '22'
 	option name 'ssh-pve-ubuntu'
+	option src_dip '106.9.177.233'
+	option reflection_src 'external'
 
 config redirect
 	option target 'DNAT'
@@ -162,6 +168,8 @@ config redirect
 	option dest_ip '192.168.10.1'
 	option dest_port '22'
 	option name 'ssh-pve-openwrt'
+	option src_dip '106.9.177.233'
+	option reflection_src 'external'
 
 config redirect
 	option target 'DNAT'
@@ -172,6 +180,8 @@ config redirect
 	option dest_ip '192.168.10.101'
 	option dest_port '20022'
 	option name 'autossh-remote-forward-ssh-pve-ubuntu'
+	option reflection_src 'external'
+	option src_dip '106.9.177.233'
 
 config redirect
 	option target 'DNAT'
@@ -182,4 +192,34 @@ config redirect
 	option src_dport '21080'
 	option dest_port '21080'
 	option name 'autossh-remote-forward-socks5-office-pve-ubuntu'
+	option src_dip '106.9.177.233'
+	option reflection_src 'external'
+
+config rule
+	option name 'zerotier'
+	option src 'wan'
+	option src_port '9993'
+	option dest_port '9993'
+	option target 'ACCEPT'
+	option dest 'lan'
+
+config redirect
+	option target 'DNAT'
+	option name 'chisel'
+	option src 'wan'
+	option dest 'lan'
+	option dest_ip '192.168.10.101'
+	list proto 'tcp'
+	list proto 'udp'
+	option src_dport '18000'
+	option dest_port '18000'
+	option src_dip '106.9.177.233'
+	option reflection_src 'external'
+
+config rule
+	option src 'wan'
+	option dest '*'
+	option target 'DROP'
+	list src_ip '143.110.224.0/20'
+	list src_ip '143.198.96.0/20'
 
