@@ -301,3 +301,14 @@ config redirect
 	option reflection_src 'external'
 	option src_ip '60.6.254.160/27'
 
+config redirect
+	option target 'DNAT'
+	option src 'wan'
+	option src_ip '106.8.0.0/15'
+	option src_dport '18888'
+	option dest 'lan'
+	option dest_ip '192.168.10.100'
+	option dest_port '18888'
+	option reflection_src 'external'
+	option name 'socks5-haproxy'
+
