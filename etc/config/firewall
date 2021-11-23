@@ -269,25 +269,13 @@ config redirect
 
 config redirect
 	option target 'DNAT'
+	option name 'socat'
 	list proto 'tcp'
 	option src 'wan'
 	option dest 'lan'
 	option dest_ip '192.168.10.100'
-	option reflection_src 'external'
-	option src_dport '7001'
-	option dest_port '7001'
-	option name 'frp-vhost-http'
-
-config redirect
-	option target 'DNAT'
-	list proto 'tcp'
-	option src 'wan'
-	option src_dport '7002'
-	option dest 'lan'
-	option dest_ip '192.168.10.100'
-	option dest_port '7002'
-	option reflection_src 'external'
-	option name 'frp-vhost-https'
+	option src_dport '9999'
+	option dest_port '9999'
 
 config redirect
 	option target 'DNAT'
@@ -311,4 +299,36 @@ config redirect
 	option dest_port '18888'
 	option reflection_src 'external'
 	option name 'socks5-haproxy'
+
+config redirect
+	option target 'DNAT'
+	option name 'apollo'
+	list proto 'tcp'
+	option src 'wan'
+	option src_dport '8888'
+	option dest 'lan'
+	option dest_ip '192.168.10.100'
+	option dest_port '8888'
+
+config redirect
+	option target 'DNAT'
+	list proto 'tcp'
+	option src 'wan'
+	option src_dport '20022'
+	option dest 'lan'
+	option dest_ip '192.168.10.101'
+	option dest_port '20022'
+	option name 'ssh-remote'
+	option src_ip '106.9.0.0/16'
+
+config redirect
+	option target 'DNAT'
+	option name 'ssh-remote-socks5'
+	list proto 'tcp'
+	option src 'wan'
+	option src_ip '106.9.0.0/16'
+	option src_dport '21080'
+	option dest 'lan'
+	option dest_ip '192.168.10.101'
+	option dest_port '21080'
 
