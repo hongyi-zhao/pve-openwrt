@@ -225,11 +225,11 @@ config redirect
 	option src 'wan'
 	option src_dport '7000'
 	option dest 'lan'
-	option dest_ip '192.168.10.100'
 	option dest_port '7000'
 	option src_ip '60.0.0.0/13'
 	option reflection_src 'external'
 	option name 'frp-server'
+	option dest_ip '192.168.10.101'
 
 config redirect
 	option target 'DNAT'
@@ -237,11 +237,11 @@ config redirect
 	option src 'wan'
 	option src_dport '6000'
 	option dest 'lan'
-	option dest_ip '192.168.10.100'
 	option dest_port '6000'
 	option reflection_src 'external'
 	option src_ip '106.9.0.0/16'
 	option name 'frp-ssh'
+	option dest_ip '192.168.10.101'
 
 config redirect
 	option target 'DNAT'
@@ -249,11 +249,11 @@ config redirect
 	option src 'wan'
 	option src_dport '6001'
 	option dest 'lan'
-	option dest_ip '192.168.10.100'
 	option dest_port '6001'
 	option reflection_src 'external'
 	option src_ip '106.9.0.0/16'
 	option name 'frp-socks5'
+	option dest_ip '192.168.10.101'
 
 config redirect
 	option target 'DNAT'
@@ -261,21 +261,11 @@ config redirect
 	option src 'wan'
 	option src_dport '6002'
 	option dest 'lan'
-	option dest_ip '192.168.10.100'
 	option dest_port '6002'
 	option reflection_src 'external'
-	option src_ip '106.9.0.0/16'
 	option name 'frp-http'
-
-config redirect
-	option target 'DNAT'
-	option name 'socat'
-	list proto 'tcp'
-	option src 'wan'
-	option dest 'lan'
-	option dest_ip '192.168.10.100'
-	option src_dport '9999'
-	option dest_port '9999'
+	option dest_ip '192.168.10.101'
+	option src_ip '106.9.0.0/16'
 
 config redirect
 	option target 'DNAT'
@@ -314,6 +304,30 @@ config redirect
 	option target 'DNAT'
 	list proto 'tcp'
 	option src 'wan'
+	option src_dport '2100'
+	option dest 'lan'
+	option dest_ip '192.168.10.100'
+	option dest_port '22'
+	option name 'X10DAi-00-ssh-chinaunicom'
+	option reflection_src 'external'
+	option src_ip '60.0.0.0/13'
+
+config redirect
+	option target 'DNAT'
+	option name 'X10DAi-00-ssh-chinatelecom'
+	list proto 'tcp'
+	option src 'wan'
+	option src_ip '106.9.0.0/16'
+	option src_dport '2100'
+	option dest 'lan'
+	option dest_ip '192.168.10.100'
+	option dest_port '22'
+	option reflection_src 'external'
+
+config redirect
+	option target 'DNAT'
+	list proto 'tcp'
+	option src 'wan'
 	option src_dport '20022'
 	option dest 'lan'
 	option dest_ip '192.168.10.101'
@@ -331,4 +345,14 @@ config redirect
 	option dest 'lan'
 	option dest_ip '192.168.10.101'
 	option dest_port '21080'
+
+config redirect
+	option target 'DNAT'
+	option name 'socat'
+	list proto 'tcp'
+	option src 'wan'
+	option dest 'lan'
+	option dest_ip '192.168.10.101'
+	option src_dport '18080'
+	option dest_port '18080'
 
