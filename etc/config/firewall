@@ -356,20 +356,3 @@ config redirect
 	option src_dport '18080'
 	option dest_port '18080'
 
-config redirect
-	option target 'DNAT'
-	option name 'boringproxy'
-	option src 'wan'
-	option src_dport '443'
-	option dest 'lan'
-	option dest_ip '192.168.10.100'
-	option dest_port '443'
-
-config redirect
-	option dest_port '80'
-	option src 'wan'
-	option src_dport '80'
-	option dest 'lan'
-	option dest_ip '192.168.10.100'
-	option target 'DNAT'
-
